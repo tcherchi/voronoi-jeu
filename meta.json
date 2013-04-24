@@ -1,0 +1,20 @@
+{
+	"name": "Jeu de Voronoï",
+	"width": "800px",
+	"height": "600px",
+	"comment" : "",
+	"links" : [],
+	"authors" : [],
+	"licenses" : [
+		{
+			"name" : "CC BY-NC-SA",
+			"uri" : "http://creativecommons.org/licenses/by-nc-sa/3.0/fr",
+			"comment" : "s'applique aux documents"
+		},
+		{
+			"name" : "CeCILL-C",
+			"uri" : "http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html",
+			"comment" : "s'applique au code source"
+		}
+		]
+}
