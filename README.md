@@ -6,7 +6,7 @@ Grain 3.0 : le jeu de Voronoï
 * [Le grain en action](http://inriamecsci.github.com/#!/grains/voronoi-jeu)
 
 
-## Compatbilité
+## Compatibilité
 
 IE8+, Firefox, Chrome, Iphone, Android Browser 3+, Firefox mobile
 
