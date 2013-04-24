@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Voronoi Tesselation</title>
+		<link type="text/css" rel="stylesheet" href="voronoi.css"/>
+		<script type="text/javascript" src="jsrender.js"></script>		
+		<script type="text/javascript" src="voronoi.js"></script>
+		<!--[if lte IE 8]>
+			<script type="text/javascript" src="d3forie8min.js"></script>
+		<![endif]-->		
+		<!--[if gte IE 9]><!-->
+			<script type="text/javascript" src="d3.min.js"></script>
+		<!--<![endif]-->
+		<script id="player-list-choose-template" type="text/x-jsrender">
+			{{for players ~ai=ai ~defaults=defaults ~colors=colors}}
+				<div class="player-info" style="border: 5px solid {{:~colors[#data]}}">
+					<span class="player-name"> Joueur {{:#data + 1}}</span>
+					<br>
+					<select id="player-select-{{:#data}}">
+						{{for ~ai ~player=#data + 1}} <!-- random issue, data = 0 gives player = "", hack to fix it-->
+							<option value={{:#index}} {{if #index==~defaults[~player - 1]}} selected="selected" {{/if}}>
+								{{:#data.name}}
+							</option>
+						{{/for}}
+					</select>
+				</div>
+			{{/for}}
+		</script>
+		<script id="player-list-score-template" type="text/x-jsrender">
+			{{for range ~scores=scores ~players=players ~colors=colors}}
+				<div class="player-info{{if !~players[#data].plays}} player-unused{{/if}}" style="border: 5px solid {{:~colors[#data]}}">
+					<span class="player-name"> Joueur {{:#data + 1}} - {{:~players[#data].name}}</span>
+					<br>
+					Score: <span class="player-score"> {{:~scores[#data]}} </span>
+				</div>
+			{{/for}}
+		</script>
+		<script id="status-start-game-template" type="text/x-jsrender">
+			Nouvelle partie : nombre de tours 
+			<select id="nbrounds-select">
+				{{for range}}
+					<option value="{{:#data}}" {{if #data == 10}} selected="selected" {{/if}}>{{:#data}}</option>
+				{{/for}}
+			</select>
+			<button onclick="VGame.startNewGameClicked()">Commencer !</button>
+		</script>
+		<script id="status-in-game-template" type="text/x-jsrender">
+			Tour {{:round + 1}} sur {{:maxRound}}. C'est &agrave; Joueur {{:player + 1}} de placer un point. <button onclick="VGame.prepareForNewGame()">Recommencer une partie...</button>
+		</script>
+		<script id="status-end-game-template" type="text/x-jsrender">
+			Victoire de Joueur {{:winner + 1}} ! 
+			<button onclick="VGame.prepareForNewGame()">Nouvelle partie...</button>
+		</script>
+	</head>
+	<body>
+		<div id="voronoi-game">
+			<div id="voronoi-header">
+				<div id="voronoi-title">
+					Jeu de Voronoï
+					<div id="voronoi-show-rules"><button onclick="VGame.showRules()">Afficher les règles</button></div>
+				</div>
+				<div id="voronoi-rules">
+					<p>
+						écrit par Corentin Wallez sur une idée de Dennis Shasha
+					</p>
+					<p>
+						<b>Règles du jeu</b>
+					</p>
+					<p>
+						Le but du jeu de Voronoï est de conquérir le plus vaste territoire.
+					</p>
+					<p>
+						Les joueurs jouent tour à tour. À chaque tour, ils placent une "pierre" en cliquant dans l'aire de jeu. Chaque pierre prend la souveraineté sur la portion de territoire qui est plus proche d'elle que de toute autre pierre : cette zone prend la forme d'une cellule de Voronoï. Chaque fois qu'une nouvelle pierre est posée, la zone dépendant des pierres précédentes est recalculée. Au bout du nombre de tours fixé au départ, le joueur dont l'ensemble des cellules couvre la plus grande surface est déclaré vainqueur.
+					</p>
+					<p>
+						Ce jeu fonctionne avec deux à huit joueurs. Quatre types de joueurs "informatiques" vous sont proposés. Par défaut, vous jouez seul contre "Grosse Tête". Les quatre joueurs que nous avons programmés ont chacun une stratégie différente :
+						<ul>
+							<li>
+								<b>Grosse Tête</b> joue totalement au hasard
+							</li>
+							<li>
+								<b>Anti Gagnant</b>	divise la plus grande cellule de Voronoï du joueur qui est en tête
+							</li>
+							<li>
+								<b>Poly Majeur</b> divise la plus grande de toutes les cellules de Voronoï précédentes
+							</li>
+							<li>
+								<b>Bonne Pioche</b>	prend dix points au hasard puis sélectionne celui qui correspond à la plus grande surface.
+							</li>
+						</ul>
+					</p>
+					<p>
+						Et vous, <b>Humain</b>, vous vous adaptez... Amusez-vous bien ! <button onclick="VGame.hideRules()">Cacher les règles</button>
+					</p>
+				</div>
+				<div id="voronoi-status"></div>
+			</div>
+			<div id="voronoi-canvas"></div>
+			<div id="voronoi-players"></div>
+		</div>
+	</body>
+</html>

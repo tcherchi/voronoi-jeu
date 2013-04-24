@@ -1,0 +1,76 @@
+/* some layout */
+#voronoi-game{
+	display: inline-block;
+	background-color: #eee;
+	font-size: 16px;
+	font-family:"Times New Roman", Times, serif
+}
+#voronoi-header{
+	/*border: 1px solid black;*/
+	padding-top: 5px;
+}
+#voronoi-show-rules{
+	float:right;
+	margin-right: 5px;
+}
+#voronoi-rules{
+	display: none;
+	width: 600px;
+	padding-left:20px;
+}
+#voronoi-title{
+	font-size: 24px;
+	text-align: center;
+}
+#voronoi-status{
+	height: 30px;
+	/*border: 1px solid blue;*/
+	padding-left: 20px;
+	padding-bottom: 10px;
+	width: auto;
+}
+#voronoi-canvas{
+	display: inline-block;
+	padding-left: 3px;
+}
+#voronoi-players{
+	vertical-align: top;
+	display: inline-block;
+	margin-right: 5px;
+	width: 180px;
+}
+
+/* Style the canvas */
+#voronoi-canvas svg{
+	border: 1px solid black;
+}
+#voronoi-canvas path{
+	stroke: #000;
+	stroke-width: .5px;
+}
+#voronoi-canvas circle{
+	fill: #ccc;
+	stroke: #000;
+	pointer-events: none;
+}
+
+/* more eye candy ? */
+#voronoi-players .player-info{
+	background-color: #fff;
+	text-align: center;
+	width: 170px;
+	height: 50px;
+}
+
+#voronoi-players .player-info.player-unused{
+	background-color: #eee;
+	border: 5px solid #ccc !important;
+	height: 45px;
+	margin-top: 5px;
+	color: #555;
+}
+#voronoi-players .player-info .player-name{
+}
+#voronoi-players .player-info select{
+	width: 165px;
+}
