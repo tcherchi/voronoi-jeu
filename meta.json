@@ -1,20 +1,50 @@
 {
-	"name": "Jeu de Voronoï",
-	"width": "850px",
-	"height": "600px",
-	"comment" : "",
-	"links" : [],
-	"authors" : [],
-	"licenses" : [
-		{
-			"name" : "CC BY-NC-SA",
-			"uri" : "http://creativecommons.org/licenses/by-nc-sa/3.0/fr",
-			"comment" : "s'applique aux documents"
-		},
-		{
-			"name" : "CeCILL-C",
-			"uri" : "http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html",
-			"comment" : "s'applique au code source"
-		}
-		]
+"name": "Jeu de Voronoï",
+"width": "850px",
+"height": "600px",
+"comment" : "",
+"links" : [
+{
+"title" : "Document original dans lequel ce grain s'insère",
+"uri" : "http://interstices.info/jeu-voronoi"
+}
+],
+"authors" : [
+{
+"name" : "Poultney, Chris",
+"role" : "auteur",
+"comment" : "version initiale en Java"
+},
+{
+"name" : "Faidley, Monty",
+"role" : "auteur",
+"comment" : "version initiale en Java"
+},
+{
+"name" : "Wallez, Corentin",
+"role" : "auteur",
+"comment" : "version HTLM5/JS"
+},
+{
+"name" : "Shasha, Dennis",
+"role" : "auteur",
+"comment" : "co-concepteur"
+},
+{
+"name" : "http://www.xprojets.com/",
+"role" : "producteur"
+}
+],
+"licenses" : [
+{
+"name" : "CC BY-NC-SA",
+"uri" : "http://creativecommons.org/licenses/by-nc-sa/3.0/fr",
+"comment" : "s'applique aux documents"
+},
+{
+"name" : "CeCILL-C",
+"uri" : "http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html",
+"comment" : "s'applique au code source"
+}
+]
 }
